@@ -1,6 +1,7 @@
 import { StyleSheet, Text } from "react-native";
-import { Slot, Stack } from "expo-router";
+import { SplashScreen, Stack } from "expo-router";
 import { useFonts } from "expo-font";
+import { useEffect } from "react";
 
 export default function RootLayout() {
 
@@ -16,7 +17,12 @@ export default function RootLayout() {
 		"Poppins-Thin": require("../assets/fonts/Poppins-Thin.ttf"),
 	})
 
+	useEffect(() => {
+		if(error) throw error;
+		if(fontsLoaded) SplashScreen.hideAsync(); // hideAsync hides the default splash screen
+	}, [fontsLoaded, error])
 
+	if(!fontsLoaded && !error) return null;
 
 	return (
 		<Stack>

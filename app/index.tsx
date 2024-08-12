@@ -5,7 +5,7 @@ import { Link } from 'expo-router';
 export default function Index() {
 	return (
 		<View className="flex-1 items-center justify-center bg-white">
-    		<Text>Reading App!</Text>
+    		<Text className="text-3xl">Reading App!</Text>
 			<StatusBar style="auto" />
 			<Link href="/profile" style={{ color: 'blue' }}>
 				Go to Profile</Link>

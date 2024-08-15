@@ -4,6 +4,7 @@ import { Link } from 'expo-router';
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { images } from '../constants';
+import CustomButton from "@/components/CustomButton";
 
 export default function Index() {
 	return (
@@ -27,7 +28,20 @@ export default function Index() {
 						font-bold text-center">Get Reading with {' '}
 						<Text className="text-secondary-200">Reader</Text>
 						</Text>
+
+						<Image
+							source={images.path}
+							className="w-[136px] h-[15px] absolute
+							-bottom-2 -right-8"
+							resizeMode="contain"
+						/>
 					</View>
+
+					<CustomButton 
+						title="Continue with Email"
+						handlePress={() => {}}
+						containerStyles="w-full mt-7"
+					/>
 				</View>
 			</ScrollView>
 		</SafeAreaView>

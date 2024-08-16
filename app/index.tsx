@@ -31,13 +31,6 @@ export default function App() {
 						font-bold text-center">Get Reading with {' '}
 						<Text className="text-secondary-200">Reader</Text>
 						</Text>
-
-						<Image
-							source={images.path}
-							className="w-[136px] h-[15px] absolute
-							-bottom-2 -right-8"
-							resizeMode="contain"
-						/>
 					</View>
 
 					<CustomButton 

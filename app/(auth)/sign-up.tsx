@@ -1,26 +1,47 @@
-import { View, Text, ScrollView, Image } from 'react-native';
+import { View, Text, ScrollView, Image, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { images } from '../../constants';
 import FormField from '../../components/FormField';
 import { useState } from 'react';
 import { CustomButton } from '../../components';
-import { Link } from 'expo-router';
+import { Link, router } from 'expo-router';
 
 import { createUser } from '../../lib/appwrite';
 
 const SignUp = () => {
 
+	const [isSubmitting, setIsSubmitting] = useState(false)
+
 	const [form, setForm] = useState({
 		username: '',
 		email: '',
 		password: ''
-	})
+	});
 
-	const [isSubmitting, setIsSubmitting] = useState(false)
+	const submit = async () => {
 
-	const submit = () => {
-		createUser();
+		if (!form.username || !form.email || !form.password) {
+			Alert.alert('Error', 'Please fill in all the fields!')
+		}
+
+		setIsSubmitting(true);
+
+		try {
+
+			const result = await createUser(form.email, form.password, form.username)
+
+			// set it to global state...
+
+			router.replace('/home')
+
+		} catch (error:any) {
+
+			Alert.alert('Error', error.message)
+
+		} finally {
+			setIsSubmitting(false)
+		}
 	}
 
 	return (
@@ -32,13 +53,13 @@ const SignUp = () => {
 					resizeMode="contain" className="w-[115px] h-[35px]"/>
 
 					<Text className="text-2xl text-white text-semibold
-					mt-10 font-psemibold">Sign up for Reader</Text>
+					mt-10 font-psemibold">Sign up to Reader</Text>
 
 					<FormField 
 						title="Username"
 						value={form.username}
-						handleChangeText={(e:any) => setForm({ ...form,
-						email: e})}
+						handleChangeText={(e:string) => setForm({ ...form,
+						username: e})}
 						otherStyles="mt-10"
 						keyboardType="username"
 					/>
@@ -46,7 +67,7 @@ const SignUp = () => {
 						title="Email"
 						value={form.email}
 						handleChangeText={(e:any) => setForm({ ...form,
-						username: e})}
+						email: e})}
 						otherStyles="mt-7"
 						keyboardType="email-address"
 					/>

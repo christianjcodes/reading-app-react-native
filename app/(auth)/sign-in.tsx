@@ -13,8 +13,8 @@ const SignIn = () => {
 
 	const [form, setForm] = useState({
 		email: '',
-		password: ''
-	})
+		password: '',
+	});
 
 	const [isSubmitting, setIsSubmitting] = useState(false)
 

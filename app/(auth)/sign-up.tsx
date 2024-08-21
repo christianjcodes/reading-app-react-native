@@ -16,7 +16,7 @@ const SignUp = () => {
 	const [form, setForm] = useState({
 		username: '',
 		email: '',
-		password: ''
+		password: '',
 	});
 
 	const submit = async () => {

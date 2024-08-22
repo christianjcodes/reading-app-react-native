@@ -18,7 +18,7 @@ const SearchInput = ({ title, value, placeholder, handleChangeText,
 				className='text-base mt-0.5 text-white flex-1
 				font-pregular'
 				value={value}
-				placeholder={placeholder}
+				placeholder="Search your reads"
 				placeholderTextColor="#7b7b8b"
 				onChangeText={handleChangeText}
 				secureTextEntry={title === 'Password' && !showPassword}

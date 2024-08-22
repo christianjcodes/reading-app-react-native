@@ -5,10 +5,11 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import images from '../../constants/images';
 import SearchInput from '@/components/SearchInput';
 import Trending from '@/components/Trending';
+import EmptyState from '@/components/EmptyState';
 
 const Home = () => {
 	return (
-		<SafeAreaView className='bg-primary'>
+		<SafeAreaView className='bg-primary h-full'>
 			<FlatList 
 				data={[{ id: 1 }, { id: 2}, { id: 3}]}
 				keyExtractor={(item) => item.$id}
@@ -46,15 +47,17 @@ const Home = () => {
 							font-pregular mb-3'>
 								Your Reads 
 							</Text>
+
+							<Trending posts={[{ id: 1 }, {id: 2}, { id: 3 }]
+							?? []} />
 						</View>
-
-						<Trending posts={[{ id: 1 }, {id: 2}, { id: 3 }]
-						?? []} />
-
 					</View>
 				)}
 				ListEmptyComponent={() => (
-					<Text className='text-white'>Empty</Text>
+					<EmptyState 
+						title="No Reads Found"
+						subtitle="Add your first read!"
+					/>
 				)}
 			/>
 		</SafeAreaView>

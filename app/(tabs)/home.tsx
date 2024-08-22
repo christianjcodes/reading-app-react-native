@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 
 import images from '../../constants/images';
 import SearchInput from '@/components/SearchInput';
+import Trending from '@/components/Trending';
 
 const Home = () => {
 	return (
@@ -46,6 +47,9 @@ const Home = () => {
 								Your Reads 
 							</Text>
 						</View>
+
+						<Trending posts={[{ id: 1 }, {id: 2}, { id: 3 }]
+						?? []} />
 
 					</View>
 				)}
